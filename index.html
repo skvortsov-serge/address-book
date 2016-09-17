@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html>
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+    <title>Contact Book</title>
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/addressbook-icon.png" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-lg-push-4 col-md-push-4 col-sm-push-4">
+                            <div class="info">
+                                <div class="inner-info">
+                                    <h3>ADDRESS BOOK</h3>
+                                    <div class="photo"></div>
+                                    <div class="details">
+                                        <hr>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                                <div class="personal-contacts">
+                                    <p><span class="glyphicon glyphicon-envelope"></span> Email: <span class="info-email"></span></p>
+                                    <p><span class="glyphicon glyphicon glyphicon-phone"></span> Phone: <span class="info-phone"></span></p>
+                                    <p><span class="glyphicons glyphicons-group"></span> Group: <span class="info-group"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-lg-pull-8 col-md-pull-8 col-sm-pull-8">
+                            <div class="contacts">
+                                <input type="text" class="form-control search" placeholder="Search your contacts">
+                                <div class="groups">
+                                    <button  id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">All contacts <span class="caret"></span></button>
+                                    <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                    	<li>All contacts</li>
+                                    	<li>Family</li>
+                                    	<li>School</li>
+                                    	<li>University</li>
+                                    </ul>
+                                </div>
+                                <ul class="list">
+                                    <li data-name="Alex Tsukur" data-email="tsukuros@gmail.com" data-phone="+380 938491321" data-group="Family">Alex Tsukur</li>
+                                    <li data-name="Serge Skvortsov" data-email="skvortsov.serge@gmail.com" data-phone="+380 50 842 9676" class="" data-group="Family">Serge Skvortsov</li>
+                                    <li data-name="Stas Skvortsov" data-email="stas.skvortsov@gmail.com" data-phone="+380 50 846 6541" class="" data-group="Family">Stas Skvortsov</li>
+                                    <li data-name="Vitaliy Ivanov" data-email="ivanov.vit@gmail.com" data-phone="+380 50 789 7894" data-group="School">Vitaliy Ivanov</li>
+                                    <li data-name="Vadim Ryabota" data-email="ryabota.vadim@gmail.com" data-phone="+380 50 789 4561" data-group="School">Vadim Ryabota</li>
+                                    <li data-name="Irina Alexandrova" data-email="irina.alex@gmail.com" data-phone="+380 50 132 9845" data-group="University">Irina Alexandrova</li>
+                                    <li data-name="Misha Gubchik" data-email="gubchik.misha@gmail.com" data-phone="+380 50 965 9845" data-group="University">Misha Gubchik</li>
+                                </ul>
+                                <form class="form-add">
+                                    <button type="button" class="close close-btn"><span>×</span></button>
+                                    <div class="form-group add-window">
+                                        <label>Full Name</label>
+                                        <input type="name" class="form-control full-name" placeholder="Full Name">
+                                    </div>
+                                    <div class="form-group add-window">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control email" placeholder="Email">
+                                    </div>
+                                    <div class="form-group add-window">
+                                        <label>Phone</label>
+                                        <input type="phone" class="form-control phone" placeholder="Phone" value="+380 ">
+                                    </div>
+                                    <div class="form-group add-window">
+                                        <label>Group</label>
+                                        <select type="group" class="form-control group" placeholder="Group">
+                                        	<option>Family</option>
+                                        	<option>School</option>
+                                        	<option>University</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="btn btn-default create">Create</button>
+                                    <div class="pointer"></div>
+                                </form>
+                                <form class="form-edit">
+                                    <button type="button" class="close close-btn"><span>×</span></button>
+                                    <div class="form-group add-window">
+                                        <label>Full Name</label>
+                                        <input type="name" class="form-control full-name full-name-edit" placeholder="Full Name">
+                                    </div>
+                                    <div class="form-group add-window">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control email email-edit" placeholder="Email">
+                                    </div>
+                                    <div class="form-group add-window">
+                                        <label>Phone</label>
+                                        <input type="phone" class="form-control phone phone-edit" placeholder="Phone" value="+380 ">
+                                    </div>
+                                    <div class="form-group add-window">
+                                        <label>Group</label>
+                                        <select type="group" class="form-control group group-edit">
+                                        	<option>Family</option>
+                                        	<option>School</option>
+                                        	<option>University</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="btn btn-default edit-contact">Confirm</button>
+                                    <div class="pointer"></div>
+                                </form>
+                                <div class="btns">
+                                    <button class="btn btn-success btn-add" type="submit">Add</button>
+                                    <button class="btn btn-danger btn-remove remove" type="submit">Remove</button>
+                                    <button class="btn btn-primary btn-edit remove" type="submit">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jscript.js"></script>
+</body>
+
+</html>
