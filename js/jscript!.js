@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     var currentGroupContacts = [],
-        AllContacts = [],
+        allContacts = [],
         searchVal = '';
 
     function info(nam, eml, phn, group) {
@@ -20,7 +20,7 @@ $(document).ready(function() {
         var groupVal = $('.group').val();
 
         if (fullNameVal != '') {
-            $('.list').prepend('<li data-name="' + fullNameVal + '" data-email="' + emailVal + '" data-phone="' + phoneVal + '" data-group="' + groupVal + '">' + fullNameVal + ' <i class="fa fa-exchange transfer data-toggle="tooltip" data-placement="top" title="Change Group""></i></li>');
+            $('.list').prepend('<li data-name="' + fullNameVal + '" data-email="' + emailVal + '" data-phone="' + phoneVal + '" data-group="' + groupVal + '">' + fullNameVal + '</li>');
             $('.form-add')[0].reset();
         } else {
             alert('write down name');
@@ -30,7 +30,7 @@ $(document).ready(function() {
 
     });
 
-    $('.contacts .list').on('click', 'li', function(event) {
+    $('.contacts .list').on('click', 'li', function() {
         info($(this).data('name'), $(this).data('email'), $(this).data('phone'), $(this).data('group'));
 
         $('.btns .btn-remove, .btn-edit').removeClass('remove');
@@ -114,44 +114,31 @@ $(document).ready(function() {
         $('.pointer').css({ 'left': pos });
     }
 
-    $('.dropdown-menu').on('click', 'li', function(event) {
+    $('.dropdown-menu li').click(function(event) {
         if ($(event.target).is('.dropdown-menu li:first-child')) {
-
             var btnGroup = $(this).text();
             $('#dLabel').text(btnGroup);
 
             currentGroupContacts = $('.list li');
 
             search(searchVal, currentGroupContacts);
-
         } else {
-            btnGroup = $(this).text();
+            var btnGroup = $(this).text();
             $('#dLabel').text(btnGroup);
-
-            $('.list').on('each', 'li', function() {
-                var groupText = $(this).data('group');
-                console.log('test');
-                if (groupText == btnGroup) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
-
-            });
-
+            
             currentGroupContacts = $('.list li').filter(function() {
-                return $(this).data('group') == btnGroup
+                return $(this).data('group') == btnGroup;
             });
 
             search(searchVal, currentGroupContacts);
         }
-
     });
+
 
     // -----------------------------------------------------------------------
     // Search Functionality
     // -----------------------------------------------------------------------
-
+    
     // Event bindings
     $('.search').keyup(function(e) {
         searchVal = $(this).val();
@@ -159,82 +146,24 @@ $(document).ready(function() {
     });
 
     // helper functions
-
     function search(key, list) {
-
-        AllContacts.hide();
+        console.log(key, list.length);
+        
+        allContacts.hide();
 
         $(list).each(function() {
             if ($(this).text().toLowerCase().search(key) == -1) {
                 $(this).hide();
+                console.log('hide');
             } else {
                 $(this).show();
-            }
-        })
-    };
-
-    // initialization
-    AllContacts = currentGroupContacts = $('.list li');
-
-
-
-    // --------------------------------------------
-    // transfering contacts into another group
-    // --------------------------------------------
-
-    var iPosLeft = ' ';
-    var iPosTop = ' ';
-
-    $('.list').on('mouseenter mouseleave', 'li', function(event) {
-        $(this).find('i').toggle(event.type === 'mouseenter');
-    });
-
-    $('.list').on('click', 'li i', function() {
-        var contact = $(this).closest('li').data('group');
-        var contactTransfer = $(this).closest('li');
-        iPosLeft = $(this).offset().left + 10;
-        iPosTop = $(this).offset().top - 128;
-
-        $('.transfer-group').toggle().css({ 'left': iPosLeft, 'top': iPosTop });
-
-        $(' .transfer-group .popover-content ul li').each(function() {
-            if ($(this).text() === contact) {
-                $(this).css({ 'color': 'rgba(51,51,51,0.2)', 'pointer-events': 'none' });
-            } else {
-                $(this).css({ 'color': 'rgba(51,51,51,1)', 'pointer-events': 'auto' });
-                $(this).click(function() {
-                    var groupTransfer = $(this).text();
-                    $(contactTransfer).data('group', groupTransfer);
-                    $('.info-group').text(groupTransfer);
-                    $('.popover').hide();
-                });
+                console.log('show');
             }
         });
 
+    };
 
-
-    });
-
-    // -------------------------------
-    // NEW GROUP
-    // -------------------------------
-
-
-    $('.new-group-btn').click(function() {
-        iPosLeft = $(this).offset().left + 75;
-        iPosTop = $(this).offset().top - 115;
-        $('.new-group').toggle().css({ 'left': iPosLeft, 'top': iPosTop });
-    });
-
-    var groupName = ' ';
-
-    $('.transf-btn').click(function() {
-        groupName = $('.group-name').val();
-        $('.group').append('<option> ' + groupName + ' </option>');
-        $('.dropdown-menu').append('<li> ' + groupName + ' </li>');
-        $('.popover-content ul').append('<li> ' + groupName + ' </li>');
-        $('.new-group').hide();
-        $('.group-name').val('');
-    });
+    // initialization
+    allContacts = currentGroupContacts = $('.list li');
 
 });

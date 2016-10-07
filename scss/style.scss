@@ -29,6 +29,11 @@ button {
     margin-left: 10px;
 }
 
+.new-group-btn {
+    float: right;
+    margin-right: 6px;
+}
+
 .form-control {
     width: 96%;
     margin-top: 7px;
@@ -217,4 +222,54 @@ form {
 
 #dLabel {
     margin-left: 0;
+}
+
+.list i {
+    display: none;
+    &:hover {
+        color: #000;
+    }
+}
+
+.transfer {
+    float: right;
+    cursor: pointer;
+}
+
+.popover-content {
+    ul {
+        padding-left: 0;
+    }
+}
+
+.fade.in {
+    width: 230px;
+}
+
+.popover > .arrow {
+    width: 15px;
+    height: 15px;
+    border-width: 11px;
+    background: white;
+    transform: rotate(45deg);
+    left: -8px !important;
+    top: 63px;
+    border: 0px solid rgba(0, 0, 0, 0.2);
+    box-shadow: -1.5px 1px 0px rgba(0, 0, 0, 0.2);
+    border-top: none;
+    border-right: none;
+}
+
+.transf-btn {
+    margin: 10px 0 0 0;
+}
+
+.new-group .arrow {
+    &:after {
+        display: none;
+    }
+}
+
+.group-field{
+    margin-bottom: 0;
 }

@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="images/addressbook-icon.png" />
     <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -44,23 +45,46 @@
                             <div class="contacts">
                                 <input type="text" class="form-control search" placeholder="Search your contacts">
                                 <div class="groups">
-                                    <button  id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">All contacts <span class="caret"></span></button>
+                                    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">All contacts <span class="caret"></span>
+                                    </button>
                                     <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                    	<li>All contacts</li>
-                                    	<li>Family</li>
-                                    	<li>School</li>
-                                    	<li>University</li>
+                                        <li>All contacts</li>
+                                        <li>Family</li>
+                                        <li>School</li>
+                                        <li>University</li>
                                     </ul>
+                                    <button class="btn btn-primary new-group-btn">New Group</button>
+                                    <div class="popover fade right in new-group">
+                                        <div class="arrow"></div>
+                                        <h3 class="popover-title">Enter Group Name</h3>
+                                        <div class="popover-content">
+                                            <div class="form-group input-wrap group-field">
+                                                <input type="text" class="form-control group-name" placeholder="Type your name of group" required>
+                                                <button class="btn btn-default transf-btn">Done</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <ul class="list">
-                                    <li data-name="Alex Tsukur" data-email="tsukuros@gmail.com" data-phone="+380 938491321" data-group="Family">Alex Tsukur</li>
-                                    <li data-name="Serge Skvortsov" data-email="skvortsov.serge@gmail.com" data-phone="+380 50 842 9676" class="" data-group="Family">Serge Skvortsov</li>
-                                    <li data-name="Stas Skvortsov" data-email="stas.skvortsov@gmail.com" data-phone="+380 50 846 6541" class="" data-group="Family">Stas Skvortsov</li>
-                                    <li data-name="Vitaliy Ivanov" data-email="ivanov.vit@gmail.com" data-phone="+380 50 789 7894" data-group="School">Vitaliy Ivanov</li>
-                                    <li data-name="Vadim Ryabota" data-email="ryabota.vadim@gmail.com" data-phone="+380 50 789 4561" data-group="School">Vadim Ryabota</li>
-                                    <li data-name="Irina Alexandrova" data-email="irina.alex@gmail.com" data-phone="+380 50 132 9845" data-group="University">Irina Alexandrova</li>
-                                    <li data-name="Misha Gubchik" data-email="gubchik.misha@gmail.com" data-phone="+380 50 965 9845" data-group="University">Misha Gubchik</li>
+                                    <li data-name="Alex Tsukur" data-email="tsukuros@gmail.com" data-phone="+380 938491321" data-group="Family">Alex Tsukur <i class="fa fa-exchange transfer"></i></li>
+                                    <li data-name="Serge Skvortsov" data-email="skvortsov.serge@gmail.com" data-phone="+380 50 842 9676" class="" data-group="Family">Serge Skvortsov <i class="fa fa-exchange transfer"></i></li>
+                                    <li data-name="Stas Skvortsov" data-email="stas.skvortsov@gmail.com" data-phone="+380 50 846 6541" class="" data-group="Family">Stas Skvortsov <i class="fa fa-exchange transfer"></i></li>
+                                    <li data-name="Vitaliy Ivanov" data-email="ivanov.vit@gmail.com" data-phone="+380 50 789 7894" data-group="School">Vitaliy Ivanov <i class="fa fa-exchange transfer"></i></li>
+                                    <li data-name="Vadim Ryabota" data-email="ryabota.vadim@gmail.com" data-phone="+380 50 789 4561" data-group="School">Vadim Ryabota <i class="fa fa-exchange transfer"></i></li>
+                                    <li data-name="Irina Alexandrova" data-email="irina.alex@gmail.com" data-phone="+380 50 132 9845" data-group="University">Irina Alexandrova <i class="fa fa-exchange transfer"></i></li>
+                                    <li data-name="Misha Gubchik" data-email="gubchik.misha@gmail.com" data-phone="+380 50 965 9845" data-group="University">Misha Gubchik <i class="fa fa-exchange transfer"></i></li>
                                 </ul>
+                                <div class="popover fade in transfer-group">
+                                    <h3 class="popover-title ">Transfer Contact To:</h3>
+                                    <div class="arrow"></div>
+                                    <div class="popover-content ">
+                                        <ul>
+                                            <li>Family</li>
+                                            <li>School</li>
+                                            <li>University</li>
+                                        </ul>
+                                    </div>
+                                </div>
                                 <form class="form-add">
                                     <button type="button" class="close close-btn"><span>×</span></button>
                                     <div class="form-group add-window">
@@ -78,9 +102,9 @@
                                     <div class="form-group add-window">
                                         <label>Group</label>
                                         <select type="group" class="form-control group" placeholder="Group">
-                                        	<option>Family</option>
-                                        	<option>School</option>
-                                        	<option>University</option>
+                                            <option>Family</option>
+                                            <option>School</option>
+                                            <option>University</option>
                                         </select>
                                     </div>
                                     <button type="button" class="btn btn-default create">Create</button>
@@ -103,9 +127,9 @@
                                     <div class="form-group add-window">
                                         <label>Group</label>
                                         <select type="group" class="form-control group group-edit">
-                                        	<option>Family</option>
-                                        	<option>School</option>
-                                        	<option>University</option>
+                                            <option>Family</option>
+                                            <option>School</option>
+                                            <option>University</option>
                                         </select>
                                     </div>
                                     <button type="button" class="btn btn-default edit-contact">Confirm</button>
