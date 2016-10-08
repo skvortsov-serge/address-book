@@ -105,12 +105,12 @@ $(document).ready(function() {
     });
 
     function positionAdd() {
-        var pos = $('.btn-add').offset().left;
+        var pos = $('.btn-add').position().left + 15;
         $('.pointer').css({ 'left': pos });
     }
 
     function positionEdit() {
-        var pos = $('.btn-edit').offset().left - $('.btn-edit').width();
+        var pos = $('.btn-edit').position().left - $('.btn-edit').width() + 23;
         $('.pointer').css({ 'left': pos });
     }
 
@@ -221,8 +221,8 @@ $(document).ready(function() {
 
 
     $('.new-group-btn').click(function() {
-        iPosLeft = $(this).offset().left + 75;
-        iPosTop = $(this).offset().top - 115;
+        iPosLeft = $(this).position().left + 105;
+        iPosTop = $(this).position.top;
         $('.new-group').toggle().css({ 'left': iPosLeft, 'top': iPosTop });
     });
 
