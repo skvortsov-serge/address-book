@@ -13,7 +13,7 @@ $(document).ready(function() {
 
     };
 
-    $('.create').click(function() {
+    $('.create').on('click', function() {
         var fullNameVal = $('.full-name').val();
         var emailVal = $('.email').val();
         var phoneVal = $('.phone').val();
@@ -128,9 +128,11 @@ $(document).ready(function() {
             btnGroup = $(this).text();
             $('#dLabel').text(btnGroup);
 
-            $('.list').on('each', 'li', function() {
+            $('.list li').each(function() {
                 var groupText = $(this).data('group');
-                console.log('test');
+                // console.log(btnGroup + 'Text of button');
+                // console.log(groupText + ' group of li');
+                // console.log(groupText == btnGroup);
                 if (groupText == btnGroup) {
                     $(this).show();
                 } else {
@@ -184,21 +186,23 @@ $(document).ready(function() {
 
     var iPosLeft = ' ';
     var iPosTop = ' ';
+    var contact = '';
+    var contactTransfer = '';
 
     $('.list').on('mouseenter mouseleave', 'li', function(event) {
         $(this).find('i').toggle(event.type === 'mouseenter');
     });
 
     $('.list').on('click', 'li i', function() {
-        var contact = $(this).closest('li').data('group');
-        var contactTransfer = $(this).closest('li');
+        contact = $(this).closest('li').data('group');
+        contactTransfer = $(this).closest('li');
         iPosLeft = $(this).offset().left + 10;
         iPosTop = $(this).offset().top - 128;
 
         $('.transfer-group').toggle().css({ 'left': iPosLeft, 'top': iPosTop });
 
         $(' .transfer-group .popover-content ul li').each(function() {
-            if ($(this).text() === contact) {
+            if ($(this).text() == contact) {
                 $(this).css({ 'color': 'rgba(51,51,51,0.2)', 'pointer-events': 'none' });
             } else {
                 $(this).css({ 'color': 'rgba(51,51,51,1)', 'pointer-events': 'auto' });
@@ -228,11 +232,11 @@ $(document).ready(function() {
 
     var groupName = ' ';
 
-    $('.transf-btn').click(function() {
+    $('.transf-btn').on('click', function() {
         groupName = $('.group-name').val();
-        $('.group').append('<option> ' + groupName + ' </option>');
-        $('.dropdown-menu').append('<li> ' + groupName + ' </li>');
-        $('.popover-content ul').append('<li> ' + groupName + ' </li>');
+        $('.group').append('<option>' + groupName + '</option>');
+        $('.dropdown-menu').append('<li>' + groupName + '</li>');
+        $('.popover-content ul').append('<li>' + groupName + '</li>');
         $('.new-group').hide();
         $('.group-name').val('');
     });

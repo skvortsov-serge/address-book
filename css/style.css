@@ -8096,6 +8096,7 @@ form {
   border: 2px solid #b3b3b3;
   display: none;
   position: absolute;
+  max-width: 276px;
   bottom: 63px;
   left: 25px;
   width: 87%;
