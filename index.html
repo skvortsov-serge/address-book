@@ -37,7 +37,7 @@
                                 <div class="personal-contacts">
                                     <p><span class="glyphicon glyphicon-envelope"></span> Email: <span class="info-email"></span></p>
                                     <p><span class="glyphicon glyphicon glyphicon-phone"></span> Phone: <span class="info-phone"></span></p>
-                                    <p><span class="glyphicons glyphicons-group"></span> Group: <span class="info-group"></span></p>
+                                    <p><i class="fa fa-users"></i></span> Group: <span class="info-group"></span></p>
                                 </div>
                             </div>
                         </div>
@@ -54,16 +54,16 @@
                                         <li>University</li>
                                     </ul>
                                     <button class="btn btn-primary new-group-btn">New Group</button>
-                                    <div class="popover fade right in new-group">
+                                    <form class="popover fade right in new-group">
                                         <div class="arrow"></div>
                                         <h3 class="popover-title">Enter Group Name</h3>
                                         <div class="popover-content">
                                             <div class="form-group input-wrap group-field">
-                                                <input type="text" class="form-control group-name" placeholder="Type your name of group" required>
-                                                <button class="btn btn-default transf-btn">Done</button>
+                                                <input type="text" class="form-control group-name" value="" placeholder="Type your name of group" required>
+                                                <button type="submit" class="btn btn-default transf-btn">Done</button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                                 <ul class="list">
                                     <li data-name="Alex Tsukur" data-email="tsukuros@gmail.com" data-phone="+380 938491321" data-group="Family">Alex Tsukur <i class="fa fa-exchange transfer"></i></li>
@@ -89,11 +89,11 @@
                                     <button type="button" class="close close-btn"><span>×</span></button>
                                     <div class="form-group add-window">
                                         <label>Full Name</label>
-                                        <input type="name" class="form-control full-name" placeholder="Full Name">
+                                        <input type="text" class="form-control full-name" placeholder="Full Name" required="" >
                                     </div>
                                     <div class="form-group add-window">
                                         <label>Email</label>
-                                        <input type="email" class="form-control email" placeholder="Email">
+                                        <input type="email" value="" class="form-control email" placeholder="Email" name="email" required >
                                     </div>
                                     <div class="form-group add-window">
                                         <label>Phone</label>
@@ -107,7 +107,7 @@
                                             <option>University</option>
                                         </select>
                                     </div>
-                                    <button type="button" class="btn btn-default create">Create</button>
+                                    <button type="submit" value="submit" class="btn btn-default create">Create</button>
                                     <div class="pointer"></div>
                                 </form>
                                 <form class="form-edit">

@@ -13,20 +13,26 @@ $(document).ready(function() {
 
     };
 
-    $('.create').on('click', function() {
+    $('.form-add').on('submit', function(event) {
+        event.preventDefault();
         var fullNameVal = $('.full-name').val();
         var emailVal = $('.email').val();
         var phoneVal = $('.phone').val();
         var groupVal = $('.group').val();
 
+        // if ( $('input[type='email']:valid') ) {
+        //     console.log('test');
+        //     // $('.list').prepend('<li data-name="' + fullNameVal + '" data-email="' + emailVal + '" data-phone="' + phoneVal + '" data-group="' + groupVal + '">' + fullNameVal + ' <i class="fa fa-exchange transfer" data-toggle="tooltip" data-placement="top" title="Change Group""></i></li>');
+        // }
+
         if (fullNameVal != '') {
-            $('.list').prepend('<li data-name="' + fullNameVal + '" data-email="' + emailVal + '" data-phone="' + phoneVal + '" data-group="' + groupVal + '">' + fullNameVal + ' <i class="fa fa-exchange transfer data-toggle="tooltip" data-placement="top" title="Change Group""></i></li>');
-            $('.form-add')[0].reset();
+            $('.list').prepend('<li data-name="' + fullNameVal + '" data-email="' + emailVal + '" data-phone="' + phoneVal + '" data-group="' + groupVal + '">' + fullNameVal + ' <i class="fa fa-exchange transfer" data-toggle="tooltip" data-placement="top" title="Change Group""></i></li>');
+            // $('.form-add')[0].reset();
         } else {
-            alert('write down name');
+
         }
 
-        $('.form-add').removeClass('is-showing');
+        // $('.form-add').removeClass('is-showing');
 
     });
 
@@ -45,7 +51,8 @@ $(document).ready(function() {
 
     $('.btns .btn-remove').on('click', function() {
 
-        var confirmation = confirm("Are You Sure?");
+        var nameDelete = $('.active').text();
+        var confirmation = confirm('Are You Sure that you wanna delete '+nameDelete+'?');
         if (confirmation == true) {
             $(this).addClass('remove');
             alert('This contact has been successfully deleted');
@@ -86,7 +93,7 @@ $(document).ready(function() {
         $('.active').data('phone', editPhone);
         $('.active').data('group', editGroup);
 
-        $('.active').text(editName);
+        $('.active').text(editName).append('<i class="fa fa-exchange transfer" data-toggle="tooltip" data-placement="top" title="Change Group""></i>');
         $('.form-edit').removeClass('is-showing');
         $('.form-edit')[0].reset();
     });
@@ -156,7 +163,7 @@ $(document).ready(function() {
 
     // Event bindings
     $('.search').keyup(function(e) {
-        searchVal = $(this).val();
+        searchVal = $.trim($(this).val());
         search(searchVal, currentGroupContacts);
     });
 
@@ -196,8 +203,8 @@ $(document).ready(function() {
     $('.list').on('click', 'li i', function() {
         contact = $(this).closest('li').data('group');
         contactTransfer = $(this).closest('li');
-        iPosLeft = $(this).offset().left + 10;
-        iPosTop = $(this).offset().top - 128;
+        iPosLeft = $(this).position().left + 30;
+        iPosTop = $(this).position().top - 65;
 
         $('.transfer-group').toggle().css({ 'left': iPosLeft, 'top': iPosTop });
 
@@ -228,17 +235,22 @@ $(document).ready(function() {
         iPosLeft = $(this).position().left + 105;
         iPosTop = $(this).position.top;
         $('.new-group').toggle().css({ 'left': iPosLeft, 'top': iPosTop });
+        $('.group-name').focus();
     });
 
-    var groupName = ' ';
+    var groupName = '';
 
     $('.transf-btn').on('click', function() {
         groupName = $('.group-name').val();
-        $('.group').append('<option>' + groupName + '</option>');
-        $('.dropdown-menu').append('<li>' + groupName + '</li>');
-        $('.popover-content ul').append('<li>' + groupName + '</li>');
-        $('.new-group').hide();
-        $('.group-name').val('');
+        if (groupName === '') {
+            // alert('The group name is not recorded');
+        } else {
+            $('.group').append('<option>' + groupName + '</option>');
+            $('.dropdown-menu').append('<li>' + groupName + '</li>');
+            $('.popover-content ul').append('<li>' + groupName + '</li>');
+            $('.new-group').hide();
+            $('.group-name').val('');
+        }
     });
 
 });
